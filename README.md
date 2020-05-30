@@ -1,0 +1,2 @@
+# Daily
+Knowledge Detail
