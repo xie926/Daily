@@ -104,5 +104,76 @@ function xier(arr) {
 xier([12, 9, 38, 44, 7, 98, 35, 59, 49, 88, 38]);
 ```
 ## 数组去重
+- Set与...
+```javascript
+function unique(arr){
+  return [...new Set(arr)]
+}
+```
+- Set 与 Array.from
+```javascript
+function unique (arr) {
+  return Array.from(new Set(arr))
+}
+```
+- 双重for循环+splice
+```javascript
+function unique(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      if (arr[i] == arr[j]) {         //第一个等同于第二个，splice方法删除第二个
+        arr.splice(j, 1);
+        j--;
+      }
+    }
+  }
+  return arr;
+}
+```
+- filter
+```javascript
+function unique(arr) {
+  return arr.filter(function (item, index, arr) {
+    return arr.indexOf(item, 0) === index;
+  });
+}
+```
+- indexOf()/includes()
+- Map数据结构
+- sort方法，前一项与后一项不相等则加入新的数组
 ## 数组扁平化
+- 递归 + reduce
+```javascript
+function flat(arr){
+  arr.reduce((pre, cur, index, array)=>{
+    return pre.concat(Array.isArray(cur) ? flat(cur) : cur)
+  },[])
+}
+```
+- 递归 + map  原理其实和 递归+reduce一样
+```javascript
+function flatten(arr) {
+  var res = [];
+  arr.map(item => {
+    if(Array.isArray(item)) {
+      res = res.concat(flatten(item));
+    } else {
+      res.push(item);
+    }
+  });
+  return res;
+}
+```
+- ES6的扩展运算符
+```javascript
+[].concat(...arr);
+```
+```javascript
+function flatten(arr) {
+  while(arr.some(item=>Array.isArray(item))) {
+    arr = [].concat(...arr);
+  }
+  return arr;
+}
+```
 ## 数组常用方法
