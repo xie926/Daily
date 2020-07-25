@@ -1,17 +1,25 @@
 ## 实现对对象的某个属性的监听
 ```javascript
-      archiver.push({
-        val: value
-      })
-    },
+function Archiver(str){
+  var value = null;
+  var achive = [];
+  Object.defineProperty(this, str, {
     get: function(){
       console.log('get')
       return value
     }
+    set: function(value){
+      console.log('set')
+      value = value
+      archiver.push({
+        val: value
+      })
+    }
   })
+  this.getArchive = function() { return archive; };
 }
 
-var obj = new Watches('age');
+var obj = new Archiver('age');
 obj.age; // get
 obj.age = 11; // set
 obj.age = 13; // set

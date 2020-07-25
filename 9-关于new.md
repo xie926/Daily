@@ -35,7 +35,7 @@ function newOper(cons, ...args){
   if(typeof cons !== 'function'){
     throw 'the first param must be a function'
   }
-  let obj = Object.create(cons)
+  let obj = Object.create(cons.prototype)
   let  res = cons.apply(obj, args)
 
   let isObject = typeof res === 'Object' && res !== null

@@ -10,10 +10,11 @@ var addToArrayForm = function(A, K) {
       cur += A[i]
       arr.unshift(cur % 10)
       cur = Math.floor(cur / 10)
-      console.log(cur)
   }
 
+  while(cur > 0){
+      arr.unshift(cur % 10)
+      cur = Math.floor(cur / 10)
+  }
   return arr
 };
-
-console.log(addToArrayForm([2,7,4], 181))
