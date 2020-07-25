@@ -1,7 +1,3 @@
-/**
- * @param {number[]} arr
- * @return {number}
- */
 var findSpecialInteger = function(arr) {
   let map = new Map(), count = Math.floor(arr.length / 4);
 
